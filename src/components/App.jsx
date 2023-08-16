@@ -4,6 +4,7 @@ import { getContacts } from '../redux/contacts/selectors';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import AppBar from '../components/AppBar/AppBar';
 import css from './App.module.css';
 import { useEffect } from 'react';
 
@@ -18,6 +19,8 @@ function App() {
   return (
     <div className={css.container}>
       <div className={css.wrapper}>
+        <AppBar />
+
         <h1 className={css.title}>Phonebook </h1>
         <ContactForm />
 
