@@ -9,11 +9,11 @@ function ContactsPage() {
   const { data: contacts } = fetchContacts();
 
   return (
-    <Container title="Contacts">
+    <>
       <AddButton text="Add new contact" />
       <Filter />
       {contacts.length > 0 && <ContactList />}
-    </Container>
+    </>
   );
 }
 
