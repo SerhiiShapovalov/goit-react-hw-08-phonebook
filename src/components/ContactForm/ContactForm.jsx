@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact, fetchContacts } from '../../redux/contacts/operations';
+import { addContact } from '../../redux/contacts/operations';
 import PropTypes from 'prop-types';
 import { getContacts } from '../../redux/contacts/selectors';
 import css from './ContactForm.module.css';
@@ -26,7 +26,6 @@ function ContactForm() {
       return;
     } else {
       dispatch(addContact(newElement));
-      dispatch(fetchContacts());
     }
 
     reset();
