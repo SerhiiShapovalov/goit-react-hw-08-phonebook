@@ -1,5 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
+// import { useForm } from 'react-hook-form';
+import {
+  // FormErrorMessage,
+  FormLabel,
+  // FormControl,
+  Input,
+  Button,
+} from '@chakra-ui/react';
 import css from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
@@ -20,19 +28,30 @@ export const RegisterForm = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
+      <FormLabel className={css.label}>
         Username
-        <input type="text" name="name" />
-      </label>
+        <Input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="name"
+          {...register('name', {
+            required: 'This is required',
+            minLength: { value: 4, message: 'Minimum length should be 4' },
+          })}
+        />
+      </FormLabel>
       <label className={css.label}>
         Email
-        <input type="email" name="email" />
+        <Input type="email" name="email" />
       </label>
       <label className={css.label}>
         Password
-        <input type="password" name="password" />
+        <Input type="password" name="password" />
       </label>
-      <button type="submit">Register</button>
+      <Button mt={4} colorScheme="teal" type="submit">
+        Register
+      </Button>
     </form>
   );
 };
