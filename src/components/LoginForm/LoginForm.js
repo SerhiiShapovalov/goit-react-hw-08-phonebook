@@ -47,7 +47,9 @@ export const LoginForm = () => {
         Password
         <Input type="password" name="password" />
       </FormLabel>
-      <Button type="submit">Log In</Button>
+      <Button mt={4} colorScheme="teal" type="submit">
+        Log In
+      </Button>
     </form>
   );
 };
