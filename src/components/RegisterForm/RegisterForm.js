@@ -1,57 +1,100 @@
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/operations';
-// import { useForm } from 'react-hook-form';
+// import { register } from '../../redux/auth/operations';
+import { useForm } from 'react-hook-form';
 import {
-  // FormErrorMessage,
+  FormErrorMessage,
   FormLabel,
-  // FormControl,
+  FormControl,
   Input,
   Button,
 } from '@chakra-ui/react';
-import css from './RegisterForm.module.css';
+import { PasswordInput } from './PasswordInput';
+// import css from './RegisterForm.module.css';
 
-export const RegisterForm = () => {
+export function RegisterForm() {
   const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const onSubmit = data => {
     dispatch(
       register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        name: data.name,
+        email: data.email,
+        password: data.password,
       })
     );
-    form.reset();
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <FormLabel className={css.label}>
-        Username
-        <Input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="name"
-          {...register('name', {
-            required: 'This is required',
-            minLength: { value: 4, message: 'Minimum length should be 4' },
-          })}
-        />
-      </FormLabel>
-      <label className={css.label}>
-        Email
-        <Input type="email" name="email" />
-      </label>
-      <label className={css.label}>
-        Password
-        <Input type="password" name="password" />
-      </label>
-      <Button mt={4} colorScheme="teal" type="submit">
-        Register
-      </Button>
+    <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+      <FormControl isInvalid={errors.name}>
+        <FormLabel>
+          Username
+          <Input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+            {...register('name', {
+              required: 'This is required',
+              minLength: { value: 4, message: 'Minimum length should be 4' },
+            })}
+          />
+        </FormLabel>
+        <FormErrorMessage>
+          {errors.name && errors.name.message}
+        </FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={errors.Email}>
+        <FormLabel>
+          Email
+          <Input
+            type="text"
+            name="Email"
+            id="Email"
+            placeholder="Enter your email"
+            {...register('Email', {
+              required: 'This is required',
+              pattern: /^\S+@\S+$/i,
+            })}
+          />
+        </FormLabel>
+        <FormErrorMessage>
+          {errors.Email && errors.Email.message}
+        </FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={errors.password}>
+        <FormLabel>
+          Password
+          <PasswordInput
+            width="50%"
+            type="text"
+            name="password"
+            id="password"
+            {...register('password', {
+              required: 'This is required',
+              minLength: { value: 6, message: 'Minimum length should be 6' },
+            })}
+          />
+        </FormLabel>
+        <FormErrorMessage>
+          {errors.password && errors.password.message}
+        </FormErrorMessage>
+        <Button
+          mt={4}
+          colorScheme="teal"
+          isLoading={isSubmitting}
+          type="submit"
+        >
+          Register
+        </Button>
+      </FormControl>
     </form>
   );
-};
+}

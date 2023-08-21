@@ -12,7 +12,7 @@ const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Сontacts'));
 
-function App() {  
+function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
@@ -47,7 +47,7 @@ function App() {
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
-      </Route>      
+      </Route>
     </Routes>
   );
 }
