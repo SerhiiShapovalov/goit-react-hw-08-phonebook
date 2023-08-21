@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Button, InputGroup, InputRightElement } from '@chakra-ui/react';
 
-export function PasswordInput({ width }) {
+export function PasswordInput() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 

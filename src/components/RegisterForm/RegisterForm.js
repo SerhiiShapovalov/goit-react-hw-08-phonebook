@@ -54,13 +54,17 @@ export function RegisterForm() {
         <FormLabel>
           Email
           <Input
-            type="text"
+            type="Email"
             name="Email"
             id="Email"
             placeholder="Enter your email"
             {...register('Email', {
               required: 'This is required',
-              pattern: /^\S+@\S+$/i,
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message:
+                  'The email address must contain the "@" symbol. And after the "@" symbol, the full address must be specified.',
+              },
             })}
           />
         </FormLabel>
@@ -73,10 +77,6 @@ export function RegisterForm() {
         <FormLabel>
           Password
           <PasswordInput
-            width="50%"
-            type="text"
-            name="password"
-            id="password"
             {...register('password', {
               required: 'This is required',
               minLength: { value: 6, message: 'Minimum length should be 6' },
