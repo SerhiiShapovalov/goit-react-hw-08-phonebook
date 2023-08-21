@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/auth/operations';
+// import { logIn } from '../../redux/auth/operations';
+import { PasswordInput } from '../RegisterForm/PasswordInput';
 import css from './LoginForm.module.css';
 // import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react';
 // // `@chakra-ui/theme` is a part of the base install with `@chakra-ui/react`
@@ -13,43 +14,82 @@ import css from './LoginForm.module.css';
 //   },
 // });
 
-// import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import {
-  // FormErrorMessage,
+  FormErrorMessage,
   FormLabel,
-  // FormControl,
+  FormControl,
   Input,
   Button,
 } from '@chakra-ui/react';
 
-export const LoginForm = () => {
+export function LoginForm() {
   const dispatch = useDispatch();
+  const {
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    register,
+  } = useForm();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const onSubmit = data => {
     dispatch(
-      logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+      register({
+        email: data.email,
+        password: data.password,
       })
     );
-    form.reset();
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <FormLabel className={css.label}>
-        Email
-        <Input type="email" name="email" />
-      </FormLabel>
-      <FormLabel className={css.label}>
-        Password
-        <Input type="password" name="password" />
-      </FormLabel>
-      <Button mt={4} colorScheme="teal" type="submit">
-        Log In
-      </Button>
+    <form
+      className={css.form}
+      onSubmit={handleSubmit(onSubmit)}
+      autoComplete="off"
+    >
+      <FormControl isInvalid={errors.email}>
+        <FormLabel>
+          Email
+          <Input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+            {...register('email', {
+              required: 'This is required',
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message:
+                  'The email address must contain the "@" symbol. And after the "@" symbol, the full address must be specified.',
+              },
+            })}
+          />
+        </FormLabel>
+        <FormErrorMessage>
+          {errors.email && errors.email.message}
+        </FormErrorMessage>
+      </FormControl>
+      <FormControl isInvalid={errors.password}>
+        <FormLabel>
+          Password
+          <PasswordInput
+            {...register('password', {
+              required: 'This is required',
+              minLength: { value: 6, message: 'Minimum length should be 6' },
+            })}
+          />
+        </FormLabel>
+        <FormErrorMessage>
+          {errors.password && errors.password.message}
+        </FormErrorMessage>
+        <Button
+          mt={4}
+          colorScheme="teal"
+          isLoading={isSubmitting}
+          type="submit"
+        >
+          Log In
+        </Button>
+      </FormControl>
     </form>
   );
-};
+}

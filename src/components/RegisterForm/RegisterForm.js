@@ -9,7 +9,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { PasswordInput } from './PasswordInput';
-// import css from './RegisterForm.module.css';
+import css from './RegisterForm.module.css';
 
 export function RegisterForm() {
   const dispatch = useDispatch();
@@ -30,7 +30,11 @@ export function RegisterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+    <form
+      className={css.form}
+      onSubmit={handleSubmit(onSubmit)}
+      autoComplete="off"
+    >
       <FormControl isInvalid={errors.name}>
         <FormLabel>
           Username
@@ -50,15 +54,15 @@ export function RegisterForm() {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={errors.Email}>
+      <FormControl isInvalid={errors.email}>
         <FormLabel>
           Email
           <Input
-            type="Email"
-            name="Email"
-            id="Email"
+            type="email"
+            name="email"
+            id="email"
             placeholder="Enter your email"
-            {...register('Email', {
+            {...register('email', {
               required: 'This is required',
               pattern: {
                 value: /^\S+@\S+$/i,
@@ -69,7 +73,7 @@ export function RegisterForm() {
           />
         </FormLabel>
         <FormErrorMessage>
-          {errors.Email && errors.Email.message}
+          {errors.email && errors.email.message}
         </FormErrorMessage>
       </FormControl>
 
