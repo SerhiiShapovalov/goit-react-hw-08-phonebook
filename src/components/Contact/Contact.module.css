@@ -21,7 +21,7 @@
 
   border: none;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: inherit;
   color: #2b2b2b;
 
   cursor: pointer;
