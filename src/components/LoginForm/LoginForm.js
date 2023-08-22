@@ -157,6 +157,7 @@ import {
   FormControl,
   FormErrorMessage,
 } from '@chakra-ui/react';
+import { PasswordInput } from '../RegisterForm/PasswordInput';
 import css from './LoginForm.module.css';
 
 export const LoginForm = () => {
@@ -209,9 +210,7 @@ export const LoginForm = () => {
 
       <FormControl isInvalid={!!passwordError}>
         <FormLabel>Password</FormLabel>
-        <Input
-          type="password"
-          name="password"
+        <PasswordInput          
           placeholder="Enter password"
           value={password}
           onChange={e => setPassword(e.target.value)}
