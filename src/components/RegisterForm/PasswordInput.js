@@ -17,7 +17,7 @@ export function PasswordInput({ value, onChange }) {
         onChange={onChange} // Передаем функцию обработки изменений
       />
       <InputRightElement width="4.5rem">
-        <Button h="1.75rem" onClick={handleClick}>
+        <Button h="1.75rem" onClick={handleClick} marginRight="1rem">
           {show ? 'Hide' : 'Show'}
         </Button>
       </InputRightElement>
