@@ -12,7 +12,8 @@
 
 .filterWrapper {
   width: 70%;
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 
   /* height: 20px;
   padding: 0 10px;
