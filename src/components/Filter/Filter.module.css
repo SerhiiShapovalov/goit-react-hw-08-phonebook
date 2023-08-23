@@ -10,8 +10,10 @@
   margin-bottom: 5px;
 }
 
-.Input {
+.filterWrapper {
   width: 70%;
+  padding: 10px;
+
   /* height: 20px;
   padding: 0 10px;
 
@@ -31,7 +33,7 @@
 } */
 
 @media screen and (min-width: 768px) {
-  .Input {
-    width: 400px;
+  .filterWrapper {
+    width: 450px;
   }
 }

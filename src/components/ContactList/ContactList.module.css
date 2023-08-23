@@ -1,8 +1,12 @@
+.contactList {
+  padding-left: 10px;
+}
+
 .item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
+  width: 90%;
 
   font-weight: 400;
   font-size: 12px;

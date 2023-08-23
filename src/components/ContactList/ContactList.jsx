@@ -23,7 +23,7 @@ function ContactList() {
   const filteredContactList = filtredContacts();
 
   return (
-    <ul>
+    <ul className={css.contactList}>
       {filteredContactList.map(({ id, name, number }) => {
         return (
           <li className={css.item} key={id}>

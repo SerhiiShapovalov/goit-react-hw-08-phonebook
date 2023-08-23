@@ -18,15 +18,17 @@ function Filter() {
   const changeFieldFilter = e => dispatch(updateFilter(e.currentTarget.value));
 
   return (
-    <label className={css.label}>
-      <p className={css.text}>Find contacts by name</p>
-      <Input
-        className={css.Input}
-        type="text"
-        value={filter}
-        onChange={changeFieldFilter}
-      />
-    </label>
+    <div className={css.filterWrapper}>
+      <label className={css.label}>
+        <p className={css.text}>Find contacts by name</p>
+        <Input
+          // className={css.Input}
+          type="text"
+          value={filter}
+          onChange={changeFieldFilter}
+        />
+      </label>
+    </div>
   );
 }
 
