@@ -1,6 +1,13 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  // FormControl,
+  // FormLabel,
+  Input,
+  // Button,
+  // FormErrorMessage,
+} from '@chakra-ui/react';
 import { addContact } from '../../redux/contacts/operations';
 import PropTypes from 'prop-types';
 import { getContacts } from '../../redux/contacts/selectors';
@@ -40,8 +47,8 @@ function ContactForm() {
     <form className={css.form} onSubmit={onSubmitForm}>
       <label className={css.label}>
         <span className={css.title}>Name</span>
-        <input
-          className={css.input}
+        <Input
+          // className={css.input}
           onChange={onChangeName}
           type="text"
           name="name"
@@ -53,8 +60,8 @@ function ContactForm() {
       </label>
       <label className={css.label}>
         <span className={css.title}>Number</span>
-        <input
-          className={css.input}
+        <Input
+          // className={css.input}
           onChange={onChangeNumber}
           type="tel"
           name="number"

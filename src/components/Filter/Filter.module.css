@@ -10,15 +10,15 @@
   margin-bottom: 5px;
 }
 
-.input {
+.Input {
   width: 70%;
-  height: 20px;
+  /* height: 20px;
   padding: 0 10px;
 
   border: solid 1px #080808;
   outline: none;
 
-  font-size: 14px;
+  font-size: 14px; */
 }
 
 .input:focus {

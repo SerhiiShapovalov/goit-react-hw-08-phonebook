@@ -1,5 +1,12 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  // FormControl,
+  // FormLabel,
+  Input,
+  // Button,
+  // FormErrorMessage,
+} from '@chakra-ui/react';
 import { updateFilter } from '../../redux/contacts/slice';
 import { getFilter } from '../../redux/contacts/selectors';
 import css from './Filter.module.css';
@@ -13,7 +20,7 @@ function Filter() {
   return (
     <label className={css.label}>
       <p className={css.text}>Find contacts by name</p>
-      <input
+      <Input
         className={css.input}
         type="text"
         value={filter}
