@@ -21,7 +21,7 @@ function Filter() {
     <label className={css.label}>
       <p className={css.text}>Find contacts by name</p>
       <Input
-        className={css.input}
+        className={css.Input}
         type="text"
         value={filter}
         onChange={changeFieldFilter}

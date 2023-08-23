@@ -21,17 +21,17 @@
   font-size: 14px; */
 }
 
-.input:focus {
+/* .input:focus {
   border-color: rgb(8, 8, 184);
 }
 
 .input::placeholder {
   font-size: 12px;
   color: #111111;
-}
+} */
 
 @media screen and (min-width: 768px) {
-  .input {
+  .Input {
     width: 400px;
   }
 }
