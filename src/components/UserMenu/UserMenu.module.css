@@ -4,6 +4,19 @@
   gap: 12px;
 }
 
-.username {
+/* .username {
   font-weight: 700;
+} */
+
+.buttonLogout {
+  padding: 12px;
+  font-weight: 700;
+  color: #2a363b;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.buttonLogout:hover,
+.buttonLogout:focus {
+  transform: scale(1.1);
 }
